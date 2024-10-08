@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thermodynamics Quiz</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon_io/favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Thermodynamics Quiz</h1>
+        <form method="POST">
+            {% for index, row in questions.iterrows() %}
+                <div class="question-block">
+                    <h3>Question {{ index + 1 }}: {{ row['Question'] }}</h3>
+                    <label><input type="radio" name="question_{{ index }}" value="{{ row['Option A'] }}"> {{ row['Option A'] }}</label><br>
+                    <label><input type="radio" name="question_{{ index }}" value="{{ row['Option B'] }}"> {{ row['Option B'] }}</label><br>
+                    <label><input type="radio" name="question_{{ index }}" value="{{ row['Option C'] }}"> {{ row['Option C'] }}</label><br>
+                    <label><input type="radio" name="question_{{ index }}" value="{{ row['Option D'] }}"> {{ row['Option D'] }}</label><br>
+                </div>
+            {% endfor %}
+            <button type="submit" class="submit-btn">Submit Quiz</button>
+        </form>
+    </div>
+</body>
+</html>
